@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-4-20 13:51:25 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping package="com.javastudy.hibernate">
+    <class name="Worker" table="WORKER">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="workerName" type="java.lang.String">
+            <column name="WORKERNAME" />
+        </property>
+        <!-- 组件 ，没有为其分配OID-->
+        <component name="pay" class="Pay">
+        <property name="monthlyPay" type="java.lang.Integer" column="MONTHLY_PAY"></property>
+        <property name="yearlyPay" type="java.lang.Integer" column="YEARLY_PAY"></property>
+        <property name="vocationPay" type="java.lang.Integer" column="VOCATION_PAY"></property>
+        </component>
+    </class>
+</hibernate-mapping>

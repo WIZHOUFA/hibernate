@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-4-20 14:25:13 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping package="com.javastudy.hibernate.n21.both">
+    <class name="Customer" table="CUSTOMER">
+        <id name="customerID" type="java.lang.Integer">
+            <column name="CUSTOMER_ID" />
+            <generator class="native" />
+        </id>
+        <property name="customerName" type="java.lang.String" length="20">
+            <column name="CUSTOMER_NAME" />
+        </property>
+        <!-- 增加一个set节点，将orders添加到其中 
+          name:Customer属性名称
+          table:set对应的元素放在哪个数据表中
+          inverse:设置为true将主控方给多的一方，建立先插入仪的一端，再插入n的一端
+          cascade:设置级联操作,delete代表级联删除，delete-orphan代表清空级联关系后
+                              自动删除没有级联关系的记录，save-update,保存1，将会保存与其相级联的n个字段。
+          order-by:加入字段，或者sql函数，为set排序。
+        -->
+        <set name="orders" table="ORDER1" inverse="true">
+        <!-- 指定外键名称  -->
+        <key column="CUSTOMER_ID"></key>
+        <!-- 指定一对多的全类名 -->
+        <one-to-many class="Order"/>
+        </set>
+    </class>
+</hibernate-mapping>

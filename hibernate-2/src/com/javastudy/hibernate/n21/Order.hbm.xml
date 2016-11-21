@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-4-20 14:25:13 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping package="com.javastudy.hibernate.n21">
+    <class name="Order" table="ORDER1" dynamic-update="true">
+        <id name="orderID" type="java.lang.Integer">
+            <column name="ORDER_ID" />
+            <generator class="native" />
+        </id>
+        <property name="orderName" type="java.lang.String" length="20">
+            <column name="ORDER_NAME" />
+        </property>
+        <!-- 设置多对一映射关系 
+             name:多对一，一那一端属性的名字
+             class:多对一，一那一端的全类名
+             column:一那一端对应在数据库中外键的字段名
+        -->
+        <many-to-one name="customer" class="Customer" column="CUSTOMER_ID">
+        </many-to-one>
+    </class>
+</hibernate-mapping>
