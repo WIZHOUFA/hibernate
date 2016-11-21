@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.javastudy.hibernate.entities.foreign">
+    <class name="Department" table="DEPARTMENT">
+        <id name="deptId" type="java.lang.Integer" access="field">
+            <column name="DEPT_ID" />
+            <!-- 基于主键的一对一关系映射 -->
+            <generator class="native"/>
+        </id>
+        <property name="deptName" type="java.lang.String">
+            <column name="DEPT_NAME" />
+        </property>
+        <!--  
+                        基于外键映射的一对一关系，在需要使用外键的表中的关系映射文件中添加many-to-one节点，并且添加unique属性为true
+                        在没有使用外键的关系映射文件中添加one-to-one节点，并且设置property-ref属性为外键属性，否则在查询时sql语句
+                        出错。
+        -->
+        <many-to-one name="mgr" class="Manager" column="MGR_ID" unique="true">
+        </many-to-one>
+    </class>
+</hibernate-mapping>

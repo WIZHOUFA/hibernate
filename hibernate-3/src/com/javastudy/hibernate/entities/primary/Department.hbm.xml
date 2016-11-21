@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.javastudy.hibernate.entities.primary">
+    <class name="Department" table="DEPARTMENT">
+        <id name="deptId" type="java.lang.Integer" access="field">
+            <column name="DEPT_ID" />
+            <!-- 基于主键的一对一关系映射 -->
+            <generator class="foreign">
+            <param name="property">mgr</param>
+            </generator>
+        </id>
+        <property name="deptName" type="java.lang.String">
+            <column name="DEPT_NAME" />
+        </property>
+        <one-to-one name="mgr" class="Manager" constrained="true"></one-to-one>
+    </class>
+</hibernate-mapping>
